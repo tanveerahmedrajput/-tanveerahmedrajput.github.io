@@ -1,1 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanveer Ahmed Rajput — Educator &amp; Engineer</title>
+<meta name="description" content="Personal site of Tanveer Ahmed Rajput — Junior Elementary School Teacher, Government of Sindh, and Computer Systems Engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101a2b;
+    --ink-deep:#0b1220;
+    --paper:#f4eee0;
+    --paper-warm:#efe6d2;
+    --teal:#2f9e8f;
+    --teal-bright:#4fc3b0;
+    --gold:#c89b3c;
+    --text-on-ink:#eae3d1;
+    --text-on-ink-dim:#aab2c2;
+    --text-on-paper:#1b2233;
+    --text-on-paper-dim:#5c5745;
+    --rule-ink:rgba(234,227,209,0.16);
+    --rule-paper:rgba(27,34,51,0.14);
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
 
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--text-on-paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:600;
+    margin:0;
+    line-height:1.08;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(16,26,43,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule-ink);
+  }
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--text-on-ink);
+    text-decoration:none;
+    letter-spacing:0.01em;
+  }
+  .brand em{
+    font-style:normal;
+    color:var(--teal-bright);
+  }
+  .navlinks{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .navlinks a{
+    color:var(--text-on-ink-dim);
+    text-decoration:none;
+    font-size:0.92rem;
+    transition:color 0.2s ease;
+  }
+  .navlinks a:hover{color:var(--text-on-ink);}
+  @media (max-width:640px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 78% -10%, rgba(47,158,143,0.22), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-deep) 100%);
+    color:var(--text-on-ink);
+    padding:88px 0 100px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow-line{
+    font-size:0.95rem;
+    color:var(--teal-bright);
+    margin:0 0 18px;
+    font-family:var(--sans);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4rem);
+    color:var(--text-on-ink);
+  }
+  .hero h1 .last{ display:block; color:var(--text-on-ink-dim); font-weight:500; }
+  .hero p.role{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    color:var(--teal-bright);
+    margin:18px 0 0;
+    font-weight:500;
+  }
+  .hero p.lede{
+    font-size:1.05rem;
+    line-height:1.65;
+    color:var(--text-on-ink-dim);
+    max-width:46ch;
+    margin:22px 0 34px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 22px;
+    border-radius:3px;
+    font-size:0.92rem;
+    font-weight:600;
+    text-decoration:none;
+    transition:transform 0.2s ease, background 0.2s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:var(--teal);
+    color:#08130f;
+  }
+  .btn-primary:hover{ background:var(--teal-bright); transform:translateY(-1px); }
+  .btn-ghost{
+    border-color:var(--rule-ink);
+    color:var(--text-on-ink);
+  }
+  .btn-ghost:hover{ border-color:var(--teal-bright); color:var(--teal-bright); }
+
+  /* --- 3D tilt badge --- */
+  .badge-stage{
+    perspective:1400px;
+    display:flex;
+    justify-content:center;
+  }
+  .badge{
+    position:relative;
+    width:280px;
+    height:390px;
+    transform-style:preserve-3d;
+    transition:transform 0.15s ease-out;
+    cursor:pointer;
+  }
+  .badge-face{
+    position:absolute;
+    inset:0;
+    border-radius:14px;
+    backface-visibility:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.55), 0 0 0 1px rgba(234,227,209,0.08);
+    overflow:hidden;
+  }
+  .badge-front{
+    background:linear-gradient(155deg, #182640 0%, #0f1a2c 60%, #0c1524 100%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:26px 24px 22px;
+  }
+  .badge-front::before{
+    content:"";
+    position:absolute;
+    top:-40%; right:-40%;
+    width:80%; height:80%;
+    background:radial-gradient(circle, rgba(79,195,176,0.28), transparent 65%);
+    pointer-events:none;
+  }
+  .badge-hole{
+    width:56px; height:8px;
+    background:rgba(0,0,0,0.4);
+    border-radius:6px;
+    margin-bottom:18px;
+  }
+  .badge-photo{
+    width:128px; height:128px;
+    border-radius:50%;
+    overflow:hidden;
+    border:3px solid var(--teal-bright);
+    box-shadow:0 0 0 6px rgba(79,195,176,0.12);
+    margin-bottom:16px;
+    z-index:1;
+  }
+  .badge-photo img{width:100%;height:100%;object-fit:cover;}
+  .badge-name{
+    font-family:var(--serif);
+    font-size:1.18rem;
+    color:var(--text-on-ink);
+    text-align:center;
+    line-height:1.25;
+    z-index:1;
+  }
+  .badge-role{
+    font-size:0.78rem;
+    color:var(--teal-bright);
+    letter-spacing:0.02em;
+    margin-top:6px;
+    text-align:center;
+    z-index:1;
+  }
+  .badge-strip{
+    margin-top:auto;
+    width:100%;
+    background:repeating-linear-gradient(135deg, rgba(200,155,60,0.9), rgba(200,155,60,0.9) 10px, rgba(16,26,43,0.9) 10px, rgba(16,26,43,0.9) 20px);
+    height:34px;
+    z-index:1;
+  }
+  .badge-id{
+    font-size:0.68rem;
+    color:var(--text-on-ink-dim);
+    text-align:center;
+    padding:8px 0 0;
+    letter-spacing:0.03em;
+    z-index:1;
+  }
+  .badge-back{
+    background:linear-gradient(155deg, #0f1a2c 0%, #182640 100%);
+    transform:rotateY(180deg);
+    padding:26px 22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:14px;
+  }
+  .badge-back h4{
+    font-family:var(--serif);
+    color:var(--teal-bright);
+    font-size:0.95rem;
+    margin:0 0 4px;
+    font-weight:600;
+  }
+  .badge-back p{
+    font-size:0.78rem;
+    color:var(--text-on-ink-dim);
+    line-height:1.5;
+    margin:0 0 12px;
+  }
+  .badge-hint{
+    text-align:center;
+    font-size:0.78rem;
+    color:var(--text-on-ink-dim);
+    margin-top:18px;
+    opacity:0.8;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:84px 0; }
+  .section-ink{ background:var(--ink); color:var(--text-on-ink); }
+  .section-paper{ background:var(--paper); color:var(--text-on-paper); }
+
+  .kicker{
+    font-size:0.88rem;
+    margin:0 0 10px;
+  }
+  .kicker.on-paper{ color:var(--teal); }
+  .kicker.on-ink{ color:var(--teal-bright); }
+
+  .section-head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.2vw, 2.5rem);
+  }
+  .section-head p{
+    margin-top:14px;
+    font-size:1.02rem;
+    line-height:1.6;
+  }
+  .section-paper .section-head p{ color:var(--text-on-paper-dim); }
+  .section-ink .section-head p{ color:var(--text-on-ink-dim); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .about-grid p{
+    font-size:1.05rem;
+    line-height:1.75;
+    color:var(--text-on-paper-dim);
+    margin:0 0 18px;
+  }
+  .facts{
+    border-top:1px solid var(--rule-paper);
+  }
+  .fact-row{
+    display:flex;
+    justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid var(--rule-paper);
+    font-size:0.94rem;
+  }
+  .fact-row .label{ color:var(--text-on-paper-dim); }
+  .fact-row .value{ font-weight:600; text-align:right; }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{
+    position:relative;
+    margin-top:8px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:7px;
+    top:6px;
+    bottom:6px;
+    width:1px;
+    background:var(--rule-ink);
+  }
+  .section-paper .timeline::before{ background:var(--rule-paper); }
+  .t-item{
+    position:relative;
+    padding:0 0 42px 40px;
+  }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-dot{
+    position:absolute;
+    left:0; top:4px;
+    width:15px; height:15px;
+    border-radius:50%;
+    background:var(--ink);
+    border:2px solid var(--teal-bright);
+  }
+  .section-paper .t-dot{ background:var(--paper); border-color:var(--teal); }
+  .t-date{
+    font-size:0.82rem;
+    color:var(--teal-bright);
+    margin-bottom:6px;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  .section-paper .t-date{ color:var(--teal); }
+  .t-title{
+    font-family:var(--serif);
+    font-size:1.22rem;
+    font-weight:600;
+    margin:0 0 3px;
+  }
+  .t-org{
+    font-size:0.92rem;
+    color:var(--text-on-ink-dim);
+    margin-bottom:10px;
+  }
+  .section-paper .t-org{ color:var(--text-on-paper-dim); }
+  .t-detail{
+    font-size:0.94rem;
+    line-height:1.6;
+    color:var(--text-on-ink-dim);
+    max-width:60ch;
+  }
+  .section-paper .t-detail{ color:var(--text-on-paper-dim); }
+  .t-detail ul{ margin:8px 0 0; padding-left:18px; }
+  .t-detail li{ margin-bottom:5px; }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:36px 48px;
+  }
+  .skill-group h3{
+    font-family:var(--sans);
+    font-size:0.82rem;
+    font-weight:700;
+    color:var(--teal);
+    margin-bottom:14px;
+    letter-spacing:0.01em;
+  }
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+  }
+  .chip{
+    font-size:0.86rem;
+    padding:7px 14px;
+    border-radius:20px;
+    border:1px solid var(--rule-paper);
+    color:var(--text-on-paper);
+    background:var(--paper-warm);
+  }
+
+  /* ---------- PROJECT SPOTLIGHT ---------- */
+  .spotlight{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .spot-visual{
+    position:relative;
+    aspect-ratio:4/3;
+    border-radius:10px;
+    background:linear-gradient(160deg, #16233b, #0c1524);
+    border:1px solid var(--rule-ink);
+    overflow:hidden;
+  }
+  .spot-visual .frame{
+    position:absolute;
+    inset:22px;
+    border:1.5px dashed rgba(79,195,176,0.5);
+    border-radius:6px;
+  }
+  .spot-visual .frame::before,
+  .spot-visual .frame::after{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border:1.5px solid var(--teal-bright);
+  }
+  .spot-visual .frame::before{ top:-1.5px; left:-1.5px; border-right:none; border-bottom:none; }
+  .spot-visual .frame::after{ bottom:-1.5px; right:-1.5px; border-left:none; border-top:none; }
+  .spot-visual .tag{
+    position:absolute;
+    top:36px; left:36px;
+    font-size:0.72rem;
+    color:var(--teal-bright);
+    background:rgba(16,26,43,0.7);
+    padding:4px 10px;
+    border-radius:3px;
+    letter-spacing:0.03em;
+  }
+  .spot-visual .core{
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    width:64px; height:64px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--teal-bright), var(--teal) 60%, #0c1524 100%);
+    box-shadow:0 0 40px rgba(79,195,176,0.45);
+  }
+  .spotlight h2{ font-size:clamp(1.7rem,2.8vw,2.2rem); margin-bottom:16px; }
+  .spotlight p{ color:var(--text-on-ink-dim); line-height:1.7; margin:0 0 14px; }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .ach-cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  .ach-cols h3{
+    font-family:var(--sans);
+    font-size:0.82rem;
+    font-weight:700;
+    color:var(--teal);
+    margin-bottom:16px;
+    letter-spacing:0.01em;
+  }
+  .ach-list{
+    list-style:none;
+    margin:0; padding:0;
+    border-top:1px solid var(--rule-paper);
+  }
+  .ach-list li{
+    padding:12px 0;
+    border-bottom:1px solid var(--rule-paper);
+    font-size:0.94rem;
+    line-height:1.5;
+    color:var(--text-on-paper-dim);
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:end;
+  }
+  .contact-grid h2{
+    font-size:clamp(2rem,4vw,2.8rem);
+    max-width:12ch;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .contact-links a{
+    display:block;
+    padding:16px 0;
+    border-bottom:1px solid var(--rule-ink);
+    text-decoration:none;
+    color:var(--text-on-ink);
+    font-size:1.05rem;
+    transition:color 0.2s ease, padding-left 0.2s ease;
+  }
+  .contact-links a:hover{ color:var(--teal-bright); padding-left:6px; }
+  .contact-links span{
+    display:block;
+    font-size:0.75rem;
+    color:var(--text-on-ink-dim);
+    margin-bottom:2px;
+  }
+  footer{
+    padding:28px 0;
+    text-align:center;
+    font-size:0.82rem;
+    color:var(--text-on-ink-dim);
+    background:var(--ink-deep);
+  }
+
+  @media (max-width:820px){
+    .hero .wrap{ grid-template-columns:1fr; }
+    .badge-stage{ order:-1; margin-bottom:8px; }
+    .about-grid, .skill-groups, .spotlight, .ach-cols, .contact-grid{
+      grid-template-columns:1fr;
+    }
+    .spotlight{ gap:32px; }
+    .spot-visual{ max-width:320px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .badge{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Tanveer<em>.</em></a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow-line">Hyderabad, Sindh, Pakistan</p>
+      <h1>Tanveer Ahmed<span class="last">Rajput</span></h1>
+      <p class="role">Elementary School Teacher, Government of Sindh</p>
+      <p class="lede">Computer Systems Engineer by training, classroom teacher by calling. I spend my days shaping young minds under SELD Sindh, and my spare cycles building the odd Android app, AR demo, or website — this one included.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="images/Tanveer_Ahmed_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+        <a class="btn btn-ghost" href="mailto:tanveerrajput0894@gmail.com">Say hello</a>
+      </div>
+    </div>
+    <div class="badge-stage">
+      <div class="badge" id="badge">
+        <div class="badge-face badge-front">
+          <div class="badge-hole"></div>
+          <div class="badge-photo"><img src="images/tanveer.jpg" alt="Tanveer Ahmed Rajput"></div>
+          <div class="badge-name">Tanveer Ahmed<br>Rajput</div>
+          <div class="badge-role">JUNIOR ELEMENTARY SCHOOL TEACHER</div>
+          <div class="badge-strip"></div>
+          <div class="badge-id">SELD · SINDH &nbsp;·&nbsp; SINCE 2022</div>
+        </div>
+        <div class="badge-face badge-back">
+          <h4>B.E, Computer Systems Engineering</h4>
+          <p>Mehran University of Engineering &amp; Technology, Jamshoro — 2017</p>
+          <h4>Final Year Project</h4>
+          <p>Smart Advertising using Augmented Reality — an Android app that overlays live video ads onto real-world hoardings.</p>
+          <h4>Contact</h4>
+          <p>+92 304 7582661<br>tanveerrajput0894@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section-paper" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker on-paper">About</p>
+      <h2>Two disciplines, one habit of building things properly</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I've spent over four years teaching in Pakistani government and private schools, currently serving as a Junior Elementary School Teacher (BPS-14) under SELD Sindh, after starting as a Primary School Teacher in the same department.</p>
+        <p>Before the classroom, I trained as a Computer Systems Engineer at Mehran University, and later taught Java and Android development at GEXTON Inc. That mix shows up in how I teach — I like clear structure, measurable progress, and tools that actually work — and in the side projects I still build, from augmented reality demos to this website.</p>
+      </div>
+      <div class="facts">
+        <div class="fact-row"><span class="label">Based in</span><span class="value">Hyderabad, Pakistan</span></div>
+        <div class="fact-row"><span class="label">Current role</span><span class="value">JEST, GBHSS Maqsoodo Rind, Shahdadpur</span></div>
+        <div class="fact-row"><span class="label">Teaching since</span><span class="value">May 2022</span></div>
+        <div class="fact-row"><span class="label">Engineering degree</span><span class="value">MUET Jamshoro, 2017</span></div>
+        <div class="fact-row"><span class="label">B.Ed</span><span class="value">SBBU Shaheed Benazirabad, 2025</span></div>
+        <div class="fact-row"><span class="label">Typing speed</span><span class="value">65 WPM · 100% accuracy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-ink" id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker on-ink">Education</p>
+      <h2>From a cadet college classroom to an engineering degree</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">2025</div>
+        <div class="t-title">Bachelor of Education (1.5 years)</div>
+        <div class="t-org">Shaheed Benazir Bhutto University, Shaheed Benazirabad — 1st Division</div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">2017</div>
+        <div class="t-title">B.E, Computer Systems Engineering</div>
+        <div class="t-org">Mehran University of Engineering &amp; Technology, Jamshoro — First Division, CGPA 3.13/4</div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">2013</div>
+        <div class="t-title">FSc, Pre-Engineering</div>
+        <div class="t-org">Cadet College Sanghar, Jam Nawaz Ali — 935/1100 (85%)</div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">2011</div>
+        <div class="t-title">SSC, Science</div>
+        <div class="t-org">Cadet College Sanghar, Jam Nawaz Ali — 753/850 (88.5%)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-paper" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker on-paper">Experience</p>
+      <h2>Classrooms, code, and a few years in between</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">Sept 2022 — Present</div>
+        <div class="t-title">Junior Elementary School Teacher (BPS-14)</div>
+        <div class="t-org">SELD, Government of Sindh</div>
+        <div class="t-detail">
+          <ul>
+            <li>Posted at GBLSS Jatia Shahdadpur on 3 Sept 2022, later transferred to GBHSS Maqsoodo Rind Shahdadpur under STR policy (Jan 2025).</li>
+            <li>Served as Enumerator for Pakistan's 7th Population &amp; 1st Digital Census (2023) and the School Census (Nov 2025).</li>
+            <li>Performed election duty in Pakistan's General Elections, 8 February 2024.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">May — Sept 2022</div>
+        <div class="t-title">Primary School Teacher (BPS-14)</div>
+        <div class="t-org">SELD, Government of Sindh — GBPS PTC Shahdadpur</div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">Apr 2018 — Feb 2019</div>
+        <div class="t-title">Java &amp; Android Trainer</div>
+        <div class="t-org">GEXTON Inc.</div>
+        <div class="t-detail">Taught basic through advanced levels; built a Torch app, a live-streaming lecture app, and a camera effects app with trainees.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">Feb — Mar 2018</div>
+        <div class="t-title">Intern C++ Developer</div>
+        <div class="t-org">E-Access (Pvt) Ltd.</div>
+        <div class="t-detail">Configured Verifone Vx520 &amp; Vx680 payment terminals and worked on the Bank AlFalah EMV application, merging loyalty (redeem, inquiry, void) transactions with ISO 8583 logs.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-date">Jun — Jul 2015</div>
+        <div class="t-title">Intern, Java (Basic Level)</div>
+        <div class="t-org">GEXTON Inc.</div>
+        <div class="t-detail">First hands-on exposure to Java EE and MySQL through a series of desktop application tasks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-ink" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker on-ink">Skills</p>
+      <h2>What I still reach for outside the classroom</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>PROGRAMMING</h3>
+        <div class="chips"><span class="chip">C / C++</span><span class="chip">Java</span><span class="chip">Python</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>WEB &amp; FRAMEWORKS</h3>
+        <div class="chips"><span class="chip">HTML/CSS/JS</span><span class="chip">PHP</span><span class="chip">Bootstrap</span><span class="chip">WordPress</span><span class="chip">Firebase</span><span class="chip">Vuforia (AR)</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>DATA &amp; TOOLS</h3>
+        <div class="chips"><span class="chip">SQL / MySQL</span><span class="chip">XAMPP</span><span class="chip">SQLite</span><span class="chip">MATLAB</span><span class="chip">UML</span><span class="chip">Android Studio</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>DESIGN &amp; OFFICE</h3>
+        <div class="chips"><span class="chip">Photoshop</span><span class="chip">Canva</span><span class="chip">CapCut</span><span class="chip">Camtasia</span><span class="chip">Excel</span><span class="chip">PowerPoint</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-paper" id="project">
+  <div class="wrap">
+    <div class="spotlight">
+      <div class="spot-visual">
+        <div class="tag">FINAL YEAR PROJECT · 2017</div>
+        <div class="frame"></div>
+        <div class="core"></div>
+      </div>
+      <div>
+        <p class="kicker on-paper" style="color:var(--teal)">Featured project</p>
+        <h2 style="color:var(--text-on-paper)">Smart Advertising using Augmented Reality</h2>
+        <p style="color:var(--text-on-paper-dim)">An Android application that turns any billboard or printed hoarding into a live video ad. Point the camera at a recognised image, and the app detects it in real time and plays the matching advertisement over it — a direct, hands-on view of physical and digital worlds overlapping.</p>
+        <p style="color:var(--text-on-paper-dim)">Built as my final-year thesis at Mehran University using Vuforia for image recognition and Android Studio for the app itself — the same instinct for overlaying structure on top of something real that still shows up in how I plan a lesson.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-ink" id="achievements">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker on-ink">Beyond the desk</p>
+      <h2>Certifications, awards &amp; a fair amount of volleyball</h2>
+    </div>
+    <div class="ach-cols">
+      <div>
+        <h3>CERTIFICATIONS</h3>
+        <ul class="ach-list">
+          <li>Android Development (4 months) — Benazir Bhutto Shaheed Youth Development Program, Gexton Education</li>
+          <li>Core &amp; Advanced Java (6 months) — Aptech Computer Education, Hyderabad</li>
+          <li>Microsoft Office Specialist — Word 2016 &amp; PowerPoint 2016 (Dec 2016)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>AWARDS &amp; ACHIEVEMENTS</h3>
+        <ul class="ach-list">
+          <li>Best Ambassador shield, IEEE TechCom '18, ISRA University</li>
+          <li>Prime Minister's Laptop Scheme — best 2nd-year performance, 2015</li>
+          <li>Gold &amp; silver medals in Volleyball, Squash and Cricket, Inter-Division Championships 2008–2013</li>
+          <li>Winning team, 4th All Sindh Inter Public School &amp; Cadet Colleges T20 Cricket Tournament, 2013</li>
+          <li>Captain, Matric Class Volleyball Championship 2011, Cadet College Sanghar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-paper" id="contact-section" style="background:var(--ink); padding-bottom:0;">
+  <div class="wrap" id="contact" style="padding-bottom:84px;">
+    <div class="contact-grid">
+      <h2 style="color:var(--text-on-ink)">Let's talk teaching, tech, or both.</h2>
+      <div class="contact-links">
+        <a href="mailto:tanveerrajput0894@gmail.com"><span>Email</span>tanveerrajput0894@gmail.com</a>
+        <a href="tel:+923047582661"><span>Phone / WhatsApp</span>+92 304 7582661</a>
+        <a href="images/Tanveer_Ahmed_CV.pdf" target="_blank" rel="noopener"><span>Resume</span>Download full CV (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Tanveer Ahmed Rajput · Hyderabad, Sindh, Pakistan
+</footer>
+
+<script>
+  // Single orchestrated 3D moment: hero badge tilts with the pointer, flips on click.
+  (function(){
+    var badge = document.getElementById('badge');
+    if(!badge) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var flipped = false;
+
+    if(!reduced){
+      var stage = badge.parentElement;
+      stage.addEventListener('mousemove', function(e){
+        var r = stage.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        var rx = (-y * 18).toFixed(2);
+        var ry = (x * 22).toFixed(2);
+        badge.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + (ry - (flipped ? 180 : 0)) + 'deg)';
+      });
+      stage.addEventListener('mouseleave', function(){
+        badge.style.transform = flipped ? 'rotateY(180deg)' : 'rotateX(0deg) rotateY(0deg)';
+      });
+    }
+
+    badge.addEventListener('click', function(){
+      flipped = !flipped;
+      badge.style.transform = flipped ? 'rotateY(180deg)' : 'rotateX(0deg) rotateY(0deg)';
+    });
+  })();
+</script>
+
+</body>
+</html>
