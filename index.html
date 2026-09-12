@@ -72,7 +72,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero .wrap{
   display:grid;
   grid-template-columns:1.1fr 0.9fr;
-  align-items:end;
+  align-items:start; /* top-align both columns so the photo lines up with the eyebrow text */
   gap:24px;
   position:relative;
   z-index:2;
@@ -137,9 +137,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
   position:relative;
   height:min(78vh,720px);
   display:flex;
-  align-items:flex-end;
+  align-items:flex-start; /* image now starts at the TOP of the panel, level with the eyebrow line */
   justify-content:center;
   opacity:0;
+  perspective:1200px; /* enables real 3D depth for the tilt transform on the image */
   animation:photoIn 1.1s cubic-bezier(.2,.8,.2,1) forwards;
   animation-delay:.3s;
 }
@@ -176,6 +177,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
   object-fit:contain;
   filter:drop-shadow(0 30px 40px rgba(0,0,0,0.45));
   will-change:transform;
+  transform-style:preserve-3d;
+  transform:perspective(1200px) rotateY(-8deg) rotateX(4deg) translateZ(0);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
 }
 .hero-photo .id-tag{
   position:absolute;
@@ -756,7 +760,7 @@ if(!reduced && 'IntersectionObserver' in window){
   document.querySelectorAll('.reveal, .reveal-stagger').forEach(function(el){ el.classList.add('is-visible'); });
 }
 
-// ---- subtle cursor-follow tilt on hero photo ----
+// ---- cursor-follow 3D tilt on hero photo ----
 (function(){
   if(reduced) return;
   var stage = document.getElementById('heroPhoto');
@@ -766,10 +770,12 @@ if(!reduced && 'IntersectionObserver' in window){
     var r = stage.getBoundingClientRect();
     var x = (e.clientX - r.left) / r.width - 0.5;
     var y = (e.clientY - r.top) / r.height - 0.5;
-    photo.style.transform = 'rotateY(' + (x * 8).toFixed(2) + 'deg) rotateX(' + (-y * 6).toFixed(2) + 'deg)';
+    var rotY = (x * 20 - 8).toFixed(2);
+    var rotX = (-y * 14 + 4).toFixed(2);
+    photo.style.transform = 'perspective(1200px) rotateY(' + rotY + 'deg) rotateX(' + rotX + 'deg) translateZ(24px)';
   });
   stage.addEventListener('mouseleave', function(){
-    photo.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    photo.style.transform = 'perspective(1200px) rotateY(-8deg) rotateX(4deg) translateZ(0)';
   });
 })();
 </script>
